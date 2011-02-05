@@ -9,6 +9,8 @@ projects:
 - LessPHP.
   (https://github.com/leafo/lessphp)
 
+It won't parse .less files. Name your files .css or .less.css for example.
+
 How to setup:
 
 1. Install Asset Compress and make sure it is working 100%.
