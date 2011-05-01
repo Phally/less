@@ -11,18 +11,36 @@ App::import('Vendor', 'Less.lessphp/lessc', array('file' => 'lessphp/lessc.inc.p
 final class LessProcessor implements AssetProcessorInterface {
 
 	/**
-	 * Parses LESS css code.
+	 * Supported extensions for this processor.
+	 *
+	 * @var array
+	 */
+	protected $_extensions = array('.less');
+
+	/**
+	 * Gets a list of supported extensions.
+	 *
+	 * @return array List of supported extensions.
+	 */
+	public function getExtensions() {
+		return $this->_extensions;
+	}
+
+	/**
+	 * Parses LESS CSS code.
 	 *
 	 * @param string $fileName The filename of the file.
 	 * @param string $content content of *.css files.
 	 * @return string
-	 * @access public
 	 */
 	public function process($fileName, $content) {
-		if (substr($fileName, -9) != '.less.css') {
-			return $content;
+		foreach ($this->_extensions as $extension) {
+			if (strtolower(substr($fileName, -strlen($extension))) == $extension) {
+				$lessc = new lessc();
+				return $lessc->parse($content);
+			}
 		}
-		$lessc = new lessc();
-		return $lessc->parse($content);
+		return $content;
 	}
 }
+?>
