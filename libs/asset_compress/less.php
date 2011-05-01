@@ -8,23 +8,14 @@ App::import('Vendor', 'Less.lessphp/lessc', array('file' => 'lessphp/lessc.inc.p
  * @author Frank de Graaf (Phally)
  * @license MIT
  */
-final class LessProcessor implements AssetProcessorInterface {
+class LessProcessor implements AssetProcessorInterface {
 
 	/**
 	 * Supported extensions for this processor.
 	 *
 	 * @var array
 	 */
-	protected $_extensions = array('.less');
-
-	/**
-	 * Gets a list of supported extensions.
-	 *
-	 * @return array List of supported extensions.
-	 */
-	public function getExtensions() {
-		return $this->_extensions;
-	}
+	protected $_extensions = array('.less', '.less.css');
 
 	/**
 	 * Parses LESS CSS code.
