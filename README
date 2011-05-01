@@ -14,7 +14,7 @@ How to setup:
 1. Install Asset Compress and make sure it is working 100%.
 2. Clone (or add as a submodule) this plugin.
 3. Make sure you init and update the /vendors/lessphp submodule.
-4. Make your APP/config/asset_compress.ini file looks like:
+4. Make your APP/config/asset_compress.ini file look like:
 
     [Css]
     searchPaths[] = WEBROOT/css/
