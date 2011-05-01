@@ -3,7 +3,7 @@ App::import('Model', 'AssetCompress.AssetProcessorInterface');
 App::import('Vendor', 'Less.lessphp/lessc', array('file' => 'lessphp/lessc.inc.php'));
 
 /**
- * LessFilter for Mark Story's Asset Compress plugin.
+ * LessProcessor for Mark Story's Asset Compress plugin.
  *
  * @author Frank de Graaf (Phally)
  * @license MIT
