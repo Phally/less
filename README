@@ -25,3 +25,7 @@ How to setup:
     filters[] = CssMin
 
 Enjoy.
+
+If you would like to use another version (older/newer) of LessPHP than the one
+in the one in the submodule, place it in APP/vendors and the processor will use
+that instead.
