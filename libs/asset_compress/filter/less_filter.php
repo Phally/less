@@ -4,6 +4,7 @@
  * LessFilter for Mark Story's Asset Compress plugin.
  *
  * @author Frank de Graaf (Phally)
+ * @author Netboy <netboy@netboy.pl>
  * @license MIT
  */
 class LessFilter extends AssetFilter {
