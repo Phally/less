@@ -17,11 +17,9 @@ How to setup:
 4. Make your APP/config/asset_compress.ini file look like:
 
     [Css]
-    searchPaths[] = WEBROOT/css/
-    stripComments = false
-    cacheFilePath = WEBROOT/cache_css/
-    cacheFiles = true
-    processors[] = Less.Less
+    paths[] = WEBROOT/css/
+    cachePath = WEBROOT/cache_css/
+    filters[] = Less.LessFilter
     filters[] = CssMin
 
 Enjoy.
