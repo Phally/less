@@ -37,7 +37,8 @@ class LessFilter extends AssetFilter {
 		foreach ($this->_settings['extensions'] as $extension) {
 			if (strtolower(substr($fileName, -strlen($extension))) == $extension) {
 				$lessc = new lessc();
-				return $lessc->parse($content);
+            $lessc->setImportDir(array(dirname($fileName)));
+				return $lessc->compile($content);
 			}
 		}
 		return $content;
