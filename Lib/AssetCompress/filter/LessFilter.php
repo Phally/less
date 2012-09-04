@@ -19,7 +19,7 @@ class LessFilter extends AssetFilter {
 		'extensions' => array('.less', '.less.css'),
 		'file' => 'lessphp/lessc.inc.php',
 		'path' => 'lessphp/lessc'
-	);	
+	);
 
 	/**
 	 * Parses LESS CSS code.
@@ -31,13 +31,12 @@ class LessFilter extends AssetFilter {
 	public function input($fileName, $content) {
 		$options = array('file' => $this->_settings['file']);
 		if (!App::import('Vendor', $this->_settings['path'], $options)) {
-			$options['file'] = 'less/vendors/' . $this->_settings['file'];
-			App::import('Vendor', 'Less.' . $this->_settings['path'], $options);
+			App::import('Vendor', 'Less.lessc', array('file' => $this->_settings['file']));
 		}
 		foreach ($this->_settings['extensions'] as $extension) {
 			if (strtolower(substr($fileName, -strlen($extension))) == $extension) {
 				$lessc = new lessc();
-            $lessc->setImportDir(array(dirname($fileName)));
+				$lessc->setImportDir(array(dirname($fileName)));
 				return $lessc->compile($content);
 			}
 		}
