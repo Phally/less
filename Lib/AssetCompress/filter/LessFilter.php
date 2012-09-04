@@ -7,6 +7,7 @@
  * @author Netboy <netboy@netboy.pl>
  * @license MIT
  */
+App::uses('AssetFilter', 'AssetCompress.Lib');
 class LessFilter extends AssetFilter {
 
 	/**

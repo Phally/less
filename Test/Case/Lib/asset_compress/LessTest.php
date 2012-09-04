@@ -1,15 +1,12 @@
 <?php
-App::import('Lib', 'AssetCompress.AssetFilterInterface');
 
-class LessTestCase extends CakeTestCase {
+App::import('Lib', 'Less.asset_compress/filter/LessFilter');
+class LessTest extends CakeTestCase {
 
 	protected $_LessFilter = null;
 
-	public function startCase() {
-		$this->assertTrue(App::import('Lib', 'Less.asset_compress/filter/LessFilter'));
-	}
-
-	public function startTest($method) {
+	public function setUp() {
+      parent::setUp();
 		$this->_LessFilter = new LessFilter();
 	}
 
@@ -17,7 +14,7 @@ class LessTestCase extends CakeTestCase {
 		$less = '@pink: #ffaaff;';
 		$less .= 'body { background: @pink; }';
 
-		$css = 'body { background:#ffaaff; }';
+		$css = "body {\n  background: #ffaaff;\n}";
 
 		$this->assertEqual(trim($this->_LessFilter->input('pink.less', $less)), $css);
 	}
@@ -26,7 +23,7 @@ class LessTestCase extends CakeTestCase {
 		$less = '@pink: #ffaaff;';
 		$less .= 'body { background: @pink; }';
 
-		$css = 'body { background:#ffaaff; }';
+		$css = "body {\n  background: #ffaaff;\n}";
 
 		$this->assertEqual(trim($this->_LessFilter->input('pink.less.css', $less)), $css);
 	}
@@ -38,4 +35,3 @@ class LessTestCase extends CakeTestCase {
 		$this->assertEqual(trim($this->_LessFilter->input('pink.css', $less)), $less);
 	}
 }
-?>
