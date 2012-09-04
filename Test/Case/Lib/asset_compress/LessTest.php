@@ -34,4 +34,23 @@ class LessTest extends CakeTestCase {
 
 		$this->assertEqual(trim($this->_LessFilter->input('pink.css', $less)), $less);
 	}
+
+   /**
+    * Test that import works, and looks for files relative to the filtered file.
+    */
+	public function testImportFile() {
+      $parentName = TMP . DS . 'LessFilterPluginTestParent.less';
+      $childFile = TMP . DS . 'LessFilterPluginTest.less';
+
+      $file = fopen($childFile, 'w');
+      fwrite($file, 'a { text-align: right; }');
+      fclose($file);
+
+		$less = '@import "LessFilterPluginTest.less";';
+
+      $css = "a {\n  text-align: right;\n}";
+
+		$this->assertEqual(trim($this->_LessFilter->input($parentName, $less)), $css);
+      unlink($childFile);
+	}
 }
